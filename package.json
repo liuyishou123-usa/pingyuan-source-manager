@@ -1,26 +1,43 @@
 {
-  "name": "pingyuan-source-manager",
+  "name": "@liuyishou123-usa/pingyuan-source-manager",
   "version": "1.0.0",
-  "description": "视频源管理系统 - 定时检查更新API",
-  "main": "src/app.js",
+  "description": "视频源管理系统 - 定时检查更新API (Cloudflare Workers)",
+  "main": "src/index.js",
+  "type": "module",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
-    "test": "jest"
+    "start": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test"
   },
-  "keywords": ["video", "source", "manager", "scheduler"],
+  "keywords": [
+    "video",
+    "source",
+    "manager",
+    "scheduler",
+    "cloudflare-workers",
+    "api"
+  ],
   "author": "liuyishou123-usa",
   "license": "MIT",
-  "dependencies": {
-    "express": "^4.18.2",
-    "node-schedule": "^2.1.1",
-    "sqlite3": "^5.1.6",
-    "axios": "^1.4.0",
-    "dotenv": "^16.3.1",
-    "cors": "^2.8.5",
-    "body-parser": "^1.20.2"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liuyishou123-usa/pingyuan-source-manager.git"
   },
+  "homepage": "https://github.com/liuyishou123-usa/pingyuan-source-manager#readme",
+  "bugs": {
+    "url": "https://github.com/liuyishou123-usa/pingyuan-source-manager/issues"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "wrangler.toml"
+  ],
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "wrangler": "^3.0.0"
+  },
+  "dependencies": {},
+  "publishConfig": {
+    "access": "public"
   }
 }
