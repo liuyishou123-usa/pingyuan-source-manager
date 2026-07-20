@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>品源管理系统</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📺 品源管理系统</h1>
+      <p class="subtitle">视频源自动更新管理平台</p>
+    </header>
+
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="sources">视频源列表</button>
+      <button class="nav-tab" data-tab="add-source">添加视频源</button>
+      <button class="nav-tab" data-tab="status">系统状态</button>
+    </nav>
+
+    <!-- 视频源列表标签页 -->
+    <section id="sources" class="tab-content active">
+      <div class="section-header">
+        <h2>视频源列表</h2>
+        <button class="btn btn-primary" onclick="loadSources()">🔄 刷新</button>
+      </div>
+      <div id="sourcesList" class="sources-list">
+        <p class="loading">��载中...</p>
+      </div>
+    </section>
+
+    <!-- 添加视频源标签页 -->
+    <section id="add-source" class="tab-content">
+      <h2>添加新的视频源</h2>
+      <form id="addSourceForm" class="form">
+        <div class="form-group">
+          <label for="name">视频源名称 *</label>
+          <input type="text" id="name" name="name" required placeholder="例：我的视频API">
+        </div>
+        
+        <div class="form-group">
+          <label for="url">API URL *</label>
+          <input type="url" id="url" name="url" required placeholder="例：https://api.example.com/videos">
+        </div>
+        
+        <div class="form-group">
+          <label for="updateInterval">更新间隔 (Cron表达式)</label>
+          <input type="text" id="updateInterval" name="updateInterval" value="0 */6 * * *" placeholder="0 */6 * * * (每6小时)">
+          <small>常见: <code>0 * * * *</code> 每小时 | <code>0 0 * * *</code> 每天 | <code>0 0 * * 0</code> 每周日</small>
+        </div>
+        
+        <div class="form-group checkbox">
+          <label>
+            <input type="checkbox" id="enabled" name="enabled" checked>
+            启用此视频源
+          </label>
+        </div>
+        
+        <button type="submit" class="btn btn-success">✅ 创建视频源</button>
+      </form>
+    </section>
+
+    <!-- 系统状态标签页 -->
+    <section id="status" class="tab-content">
+      <div class="section-header">
+        <h2>系统状态</h2>
+        <button class="btn btn-primary" onclick="loadStatus()">🔄 刷新</button>
+      </div>
+      <div id="statusInfo" class="status-info">
+        <p class="loading">加载中...</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- 详情模态框 -->
+  <div id="detailModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
